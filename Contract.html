@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Friendship Contract</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,.15);
+            text-align: center;
+            width: 400px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .yes { background: #4CAF50; color: white; }
+        .no { background: #f44336; color: white; }
+
+        input {
+            width: 80%;
+            padding: 10px;
+            margin: 15px 0;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        #contractScreen {
+            display: none;
+        }
+
+        #success {
+            display: none;
+            color: green;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card" id="questionScreen">
+    <h2>Did you really have to ask that question?</h2>
+
+    <button class="yes" onclick="showContract()">Yes</button>
+    <button class="no" onclick="showContract()">No</button>
+</div>
+
+<div class="card" id="contractScreen">
+    <h2>Friendship Contract</h2>
+
+    <p>
+        Please sign this contract to continue.<br>
+        From this point on, our relationship shall remain
+        strictly friendship.
+    </p>
+
+    <input type="text" id="signature" placeholder="Type your name here">
+
+    <br>
+
+    <button class="yes" onclick="signContract()">Sign Contract</button>
+
+    <div id="success"></div>
+</div>
+
+<script>
+function showContract() {
+    document.getElementById("questionScreen").style.display = "none";
+    document.getElementById("contractScreen").style.display = "block";
+}
+
+function signContract() {
+    const name = document.getElementById("signature").value.trim();
+
+    if (!name) {
+        alert("Please enter your name.");
+        return;
+    }
+
+    document.getElementById("success").style.display = "block";
+    document.getElementById("success").innerHTML =
+        `Contract signed by <strong>${name}</strong>.<br>
+        Friendship mode activated. 🤝`;
+}
+</script>
+
+</body>
+</html>
